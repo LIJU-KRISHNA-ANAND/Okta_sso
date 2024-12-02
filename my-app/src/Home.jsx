@@ -53,11 +53,9 @@ const Home = () => {
     getAccessTokenAndVerify();
   }, [authState, oktaAuth]);
 
-  // Loading or Authentication state
   if (!authState) return <div>Loading...</div>;
   if (!authState.isAuthenticated || error) return <LoginPage />;
 
-  // Render based on verification status
   if (isVerified) return <MainPage />;
   return <div>Loading user verification...</div>;
 };

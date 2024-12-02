@@ -1,6 +1,5 @@
 import { useOktaAuth } from "@okta/okta-react";
-import Protected from "./Protected";
-import './MainPage.css'; // Import the CSS file
+import './MainPage.css';
 
 const MainPage = () => {
     const { oktaAuth } = useOktaAuth();
@@ -10,7 +9,10 @@ const MainPage = () => {
         <div className="container">
             <div className="main-content">
                 <p>Logged in!</p>
-                <Protected/>
+                <div className="protected-content">
+                    <h1>Protected Page</h1>
+                    <p>This page is only accessible to authenticated users.</p>
+                </div>
                 <button onClick={logout}>Logout</button>
             </div>
         </div>
