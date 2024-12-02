@@ -38,58 +38,27 @@ const Home = () => {
       return;
     }
 
-    const verifyUser = async () => {
-      if (!authState.isAuthenticated) {
-        return;
-      }
-
+    const getAccessTokenAndVerify = async () => {
       try {
         const token = await oktaAuth.tokenManager.get("accessToken");
-        console.log(token.accessToken)
-        const response = await fetch('http://localhost:5000/verify', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token.accessToken}`,
-            'Content-Type': 'application/json'
-          }
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          console.log('User verified and stored:', data);
-          setIsVerified(true);
-        } else {
-          console.error('Error:', data.error);
-          setIsVerified(false);
-          setError(data.error);
-        }
+        console.log('Access Token:', token.accessToken);
+        await verifyUser(token.accessToken);
       } catch (error) {
-        console.error('Error during verification:', error);
         setIsVerified(false);
-        setError('An error occurred during verification');
+        setError('Failed to retrieve access token');
+        console.error('Error retrieving access token:', error);
       }
     };
 
-    verifyUser();
+    getAccessTokenAndVerify();
   }, [authState, oktaAuth]);
 
-  if (!authState) {
-    return <div>Loading...</div>;
-  }
+  // Loading or Authentication state
+  if (!authState) return <div>Loading...</div>;
+  if (!authState.isAuthenticated || error) return <LoginPage />;
 
-  if (!authState.isAuthenticated) {
-    return <LoginPage />;
-  }
-
-  if (error) {
-    return <LoginPage />;
-  }
-
-  if (isVerified) {
-    return <MainPage />;
-  }
-
+  // Render based on verification status
+  if (isVerified) return <MainPage />;
   return <div>Loading user verification...</div>;
 };
 
