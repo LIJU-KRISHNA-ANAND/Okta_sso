@@ -1,0 +1,81 @@
+/* MainPage.css */
+
+/* Global styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+}
+
+/* Main container for the whole page */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styling for MainPage */
+.main-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Title and Message in MainPage */
+.main-content p {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.main-content button {
+    background-color: #007bff; /* Blue background */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.main-content button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for Protected Page */
+.protected-content {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.protected-content h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+.protected-content p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+/* Responsive Styling */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .main-content, .protected-content {
+        padding: 20px;
+    }
+
+    .main-content button {
+        width: 100%;
+    }
+}

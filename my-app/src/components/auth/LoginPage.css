@@ -1,0 +1,57 @@
+/* LoginPage.css */
+
+/* Ensure full height of the screen and use flexbox to center content */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f4f8; /* Light background color */
+}
+
+/* Container for the LoginPage */
+.login-container {
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 300px;
+    max-width: 100%;
+}
+
+/* Title of the LoginPage */
+.login-container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style for the Login button */
+.login-button {
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect on the Login button */
+.login-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Small responsive adjustments */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px;
+        width: 80%;
+    }
+}
