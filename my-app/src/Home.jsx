@@ -41,7 +41,6 @@ const Home = () => {
     const getAccessTokenAndVerify = async () => {
       try {
         const token = await oktaAuth.tokenManager.get("accessToken");
-        console.log('Access Token:', token.accessToken);
         await verifyUser(token.accessToken);
       } catch (error) {
         setIsVerified(false);

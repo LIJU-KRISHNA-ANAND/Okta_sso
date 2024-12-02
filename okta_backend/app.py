@@ -28,11 +28,12 @@ def home():
 
 @app.route('/verify', methods=['POST'])
 def verify_user():
-    token = request.headers.get('Authorization').split('Bearer ')[-1]
+    token = request.headers.get('Authorization')
     
     if not token:
         return jsonify({"error": "Token is missing"}), 400
     
+    token = token.split('Bearer ')[-1]
     is_valid, user_info = verify_okta_token(token)
     
     if is_valid:
@@ -63,7 +64,6 @@ def verify_okta_token(token):
             'client_id': f"{OKTA_CLIENT_ID}"
         }
         response = requests.post(url, headers=headers, data=data)
-        print(response)
         if response.status_code == 200:
             token_data = response.json()
             
@@ -84,3 +84,4 @@ with app.app_context():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
